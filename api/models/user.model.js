@@ -5,10 +5,11 @@ const userSchema = new mongoose.Schema(
         username: {
             type: String,
             required: true,
-            unique: true,
-            lowercase: true,
-            trim: true, 
            
+        },
+        email: {
+            type:String,
+            required: true
         },
         password: {
             type: String,
@@ -17,6 +18,9 @@ const userSchema = new mongoose.Schema(
         post: {
             type: Number,
             default: 0
+        },
+        avatar:{
+            type:String
         }
     }
 )

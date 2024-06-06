@@ -9,17 +9,34 @@ import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 
 dotenv.config({
-    path:"./env"
+        path:"./env"
 })
 connectDB()
+
+
 const app=express()
-app.use(cors())
-app.use(express.json({extended:true}))
-app.use(express.urlencoded({extended:true}))
+
+
+app.use(cors({
+        origin: ['http://localhost:5173/', 'http://localhost:5173'],
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        credentials: true, 
+    }));
+app.use(express.json({limit:"16kb"}))
+app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
-app.use(express.static("public"))
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.use(express.static("public"))
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+
+
+
+app.get("/",(req,res)=>{
+    res.send("hello")
+})
+
+
+
 app.use('/api/users',userrouter)
 app.use('/api/posts',postrouter)
 

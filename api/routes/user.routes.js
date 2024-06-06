@@ -5,7 +5,7 @@ const userrouter=Router()
 
 userrouter.post("/register",registeruser)
 userrouter.post("/login",login)
-userrouter.get("/:id",getuser)
+userrouter.get("/profile",getuser)
 userrouter.post("/edit",auth,edit)
 userrouter.patch("/change-avatar",changeAvatar)
 
