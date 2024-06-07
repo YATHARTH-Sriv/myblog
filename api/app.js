@@ -22,7 +22,13 @@ const app=express()
 //         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 //         credentials: true, 
 //     }));
-app.use(cors())
+const corsOptions = {
+    origin: 'https://yatharth-myblog.vercel.app', // Replace with your frontend's URL
+    optionsSuccessStatus: 200
+  };
+  
+  app.use(cors(corsOptions));
+  
 app.use(express.json({limit:"16kb"}))
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
