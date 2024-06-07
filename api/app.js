@@ -49,4 +49,4 @@ app.use('/api/posts',postrouter)
 app.use(notFound)
 app.use(Errorhandle)
 
-app.listen(process.env.PORT || 8000)
+app.listen(process.env.PORT || 3000)
