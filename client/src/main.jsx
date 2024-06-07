@@ -13,6 +13,7 @@ import Logout from './pages/Logout.jsx'
 import Singlepost from './pages/Singlepost.jsx'
 import  {Userprovider} from './Usercontext.jsx'
 import Myposts from './pages/Myposts.jsx'
+import Delete from './pages/delete.jsx'
 
 
 const route=createBrowserRouter([
@@ -37,7 +38,7 @@ const route=createBrowserRouter([
         element:<Singlepost/>
        },
        {
-        path:"profile/:id",
+        path:"profile",
         element: <Profile/>
        },
        {
@@ -55,6 +56,10 @@ const route=createBrowserRouter([
        {
         path:"myposts/:id",
         element:<Myposts/>
+       },
+       {
+        path:"delete/:id",
+        element:<Delete/>
        }
     ]
   },

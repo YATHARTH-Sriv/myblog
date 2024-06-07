@@ -1,8 +1,34 @@
-import React ,{useState} from 'react'
-import { Link } from 'react-router-dom'
+import React ,{useState,useContext, useEffect} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Usercontext  } from '../Usercontext';
+import axios from 'axios'
 
 function Profile() {
   const [avatar, setavatar] = useState("")
+  const [details, setdetails] = useState("")
+  const {currentuser}=useContext(Usercontext)
+  const token=currentuser?.token
+  const navigate=useNavigate()
+  useEffect(() => {
+    if(!token){
+      navigate('/')
+    }
+  })
+
+  useEffect(() => {
+    const getdetails=async()=>{
+      const res=await axios.get("http://localhost:8000/api/users/profile",{
+        withCredentials: true,
+        headers: {Authorization: `Bearer ${token}`}
+      })
+      console.log(res)
+      setdetails(res.data)
+
+    }
+    getdetails()
+  },[currentuser])
+  
+  
   return (
     <div className="max-w-2xl mx-auto p-4">
     <div className="bg-white shadow-md rounded-lg p-6">
@@ -13,8 +39,8 @@ function Profile() {
           alt="User Avatar"
         />
         <div>
-          <h2 className="text-xl font-semibold">User Name</h2>
-          <Link to="/myposts/sddds">
+          <h2 className="text-xl font-semibold">{details.username}</h2>
+          <Link to={`/myposts/${currentuser.id}`}>
           <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
             Show All Posts
           </button>
@@ -25,7 +51,7 @@ function Profile() {
         <div>
           <p className="block text-gray-700">Username:</p>
           <p className="mt-1 block w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500">
-            Elon bezos
+            {details.username}
           </p>
         </div>
         <div>
@@ -33,7 +59,7 @@ function Profile() {
           <p
             className="mt-1 block w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
             
-          >bezos@tesla.com</p>
+          >{details.email}</p>
         </div>
         <div className=' gap-2 flex'>
           <p className="block text-gray-700">Posts:</p>
@@ -42,12 +68,7 @@ function Profile() {
             
           >3</p>
         </div>
-        <button
-          type="submit"
-          className="w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700"
-        >
-          Update Profile
-        </button>
+        
       </div>
     </div>
   </div>

@@ -25,9 +25,14 @@ app.use(cors({
 app.use(express.json({limit:"16kb"}))
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
+app.use('/uploads', express.static('uploads'));
+
 // app.use(express.static("public"))
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
@@ -43,4 +48,4 @@ app.use('/api/posts',postrouter)
 app.use(notFound)
 app.use(Errorhandle)
 
-app.listen(8000)
+app.listen(process.env.PORT)

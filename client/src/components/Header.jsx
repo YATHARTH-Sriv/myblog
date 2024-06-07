@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import { Fragment } from 'react'
 import {
@@ -12,11 +12,10 @@ import {
   Transition,
 } from '@headlessui/react'
 
-
 const navigation = [
-  { name: 'Profile', link: '/profile/:sddh', current: false },
+  { name: 'Profile', link: '/profile', current: false },
   { name: 'create', link: '/create', current: false },
-  { name: 'dashboard', link: '/myposts/sssddd', current: false },
+  
   { name: 'logout', link: '/logout', current: false },
 ]
 
@@ -102,7 +101,7 @@ function Header() {
                       <MenuItem>
                         {({ focus }) => (
                           <a
-                            href="/profile/ssss"
+                            href="/profile"
                             className={classNames(focus ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your Profile

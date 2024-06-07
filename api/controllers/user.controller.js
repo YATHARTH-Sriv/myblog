@@ -54,26 +54,17 @@ const login=async (req,res,next)=>{
 
 
 const getuser=async(req,res,next)=>{
-    app.get('/profile', (req,res) => {
-        const {token} = req.cookies;
-        jwt.verify(token, secret, {}, (err,info) => {
-          if (err) throw err;
-          res.json(info);
-        });
-      });
-    // try {
-    //     const {id}= req.params
-    //     console.log(id)
-    //     const user= await User.findById(id).select("-password")
-    //     console.log(user.username)
-    //     if(!user){
-    //         return next(new HttpError("user not found",402))
-    //     }
-    //     res.status(201).json(user)
+    
+    try {
+        const {id}= req.user._id
+        console.log(id)
+        const user=await User.findOne({ username: req.user.username}).select("-password")
+        console.log(user.username)
+        res.status(201).json(user)
 
-    // } catch (error) {
-    //     return next( new HttpError(" cannot get details of rquested user",400))
-    // }
+    } catch (error) {
+        return next( new HttpError(" cannot get details of rquested user",400))
+    }
 }
 
 
