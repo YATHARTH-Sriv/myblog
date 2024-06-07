@@ -17,12 +17,12 @@ connectDB()
 const app=express()
 
 
-app.use(cors({
-        origin: ['http://localhost:5173/', 'http://localhost:5173',"https://yatharth-myblog.vercel.app/"],
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        credentials: true, 
-    }));
-app.use(cors())
+// app.use(cors({
+//         origin: ['http://localhost:5173/', 'http://localhost:5173',"https://yatharth-myblog.vercel.app/"],
+//         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//         credentials: true, 
+//     }));
+// app.use(cors())
 app.use(express.json({limit:"16kb"}))
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
