@@ -10,7 +10,7 @@ function Singlepost() {
     const fetchposts= async()=>{
       
       try {
-        const res=await axios.get(`http://localhost:8000/api/posts/${id}`)
+        const res=await axios.get(`${import.meta.env.VITE_APP_BASE_URL}/posts/${id}`)
         setpost(res.data)
         console.log(post)
         

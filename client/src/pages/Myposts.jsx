@@ -23,7 +23,7 @@ function Myposts() {
       useEffect(() => {
         const fetchpost=async()=>{
            try {
-            const postsbyuser=await axios.get(`http://localhost:8000/api/posts/users/${id}`, {
+            const postsbyuser=await axios.get(`${import.meta.env.VITE_APP_BASE_URL}/posts/users/${id}`, {
               withCredentials: true,
               headers: {Authorization: `Bearer ${token}`}
             })
