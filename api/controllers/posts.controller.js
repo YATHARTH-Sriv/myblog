@@ -48,7 +48,7 @@ import User from "../models/user.model.js";
 
 const getAllPost= async(req,res,next)=>{
     try {
-        
+        console.log("hello everyone")
         res.status(201).json(await Post.find())
     } catch (error) {
         return next(new HttpError((error)))
