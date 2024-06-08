@@ -52,7 +52,7 @@ function Create() {
     console.log(thumbnail)
     ev.preventDefault();
     const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/posts`, data, {
-      withCredentials: true,
+      // withCredentials: true,
       headers: {Authorization: `Bearer ${token}`}
     });
     if (response) {

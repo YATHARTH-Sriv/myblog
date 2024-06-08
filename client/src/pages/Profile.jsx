@@ -18,7 +18,7 @@ function Profile() {
   useEffect(() => {
     const getdetails=async()=>{
       const res=await axios.get(`${import.meta.env.VITE_APP_BASE_URL}/users/profile`,{
-        withCredentials: true,
+        // withCredentials: true,
         headers: {Authorization: `Bearer ${token}`}
       })
       console.log(res)

@@ -24,7 +24,7 @@ function Myposts() {
         const fetchpost=async()=>{
            try {
             const postsbyuser=await axios.get(`${import.meta.env.VITE_APP_BASE_URL}/posts/users/${id}`, {
-              withCredentials: true,
+              // withCredentials: true,
               headers: {Authorization: `Bearer ${token}`}
             })
             setpost(postsbyuser.data)

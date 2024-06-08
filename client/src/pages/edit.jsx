@@ -61,7 +61,7 @@ function Edit() {
     data.set('description', description);
     data.set('content', content);
     const response = await axios.patch(`${import.meta.env.VITE_APP_URL}/api/posts/${id}`, data, {
-      withCredentials: true,
+      // withCredentials: true,
       headers: {Authorization: `Bearer ${token}`}
     });
   }
