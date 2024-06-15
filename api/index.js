@@ -24,7 +24,10 @@ const app=express()
 // },
 // ))
 
-app.cors()
+app.use(cors({
+        origin: 'https://myblog-ks4w.vercel.app', // Update to your specific origin
+        methods: ['GET', 'POST', 'OPTIONS'],
+}))
 
   
   
