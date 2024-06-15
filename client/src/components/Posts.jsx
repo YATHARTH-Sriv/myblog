@@ -11,7 +11,7 @@ function Posts() {
     const fetchposts= async()=>{
       
       try {
-        const res=await axios.get(`${import.meta.env.VITE_APP_URL}/api/posts`)
+        const res=await axios.get(`${import.meta.env.VITE_APP_BASE_URL}/posts`)
         setposts(res.data)
         console.log(res)
         
